@@ -13,7 +13,7 @@
 </h1>
 	<div class="container">
 		<div class="row">
-			<form ref='uploadForm' id='uploadForm' action='http://localhost:3000/upload' method='post' encType="multipart/form-data">
+			<form ref='uploadForm' id='uploadForm' action='/upload' onsubmit="return checkValidation()" method='post' encType="multipart/form-data">
 				    <label class="control-label">Select File</label>
     				<input required id="newfile" name="newfile" type="file" class="file">
 
@@ -23,15 +23,15 @@
 	</div>
 
 <script type="text/javascript">
-	$('form').submit(function(e){
-		e.preventDefault();
+	function checkValidation(){
 		var ext = $('#newfile').val().split('.').pop().toLowerCase();
 		if(ext !== 'txt') {
 			alert('Please upload file with .txt extension!');
+			return false;
 		} else {
-			$('#uploadForm').unbind().submit();
+			return true;
 		}
-	});
+	}
 	$("#newfile").fileinput();
 </script>	
 </body>

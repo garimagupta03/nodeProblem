@@ -5,7 +5,7 @@ module.exports = function (req, res, next) {
     if (!req.files)
     return res.status(400).send('No files were uploaded.');
  
-    let newfile = req.files.newfile;
+    var newfile = req.files.newfile;
 
     var date = new Date();
     var currentDate = date.getFullYear() + '' + (date.getMonth() + 1) + date.getDate() + date.getHours() + date.getMinutes() + date.getSeconds();
