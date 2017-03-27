@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Get your file sorted here</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/3.0.0/css/fileinput.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/3.0.0/js/fileinput.js"></script
+</head>
+<body>
+<h1 class="text-center">
+	Upload your file
+</h1>
+	<div class="container">
+		<div class="row">
+			<form ref='uploadForm' id='uploadForm' action='http://localhost:3000/upload' method='post' encType="multipart/form-data">
+				    <label class="control-label">Select File</label>
+    				<input required id="newfile" name="newfile" type="file" class="file">
+
+			</form>
+		</div>
+
+	</div>
+
+<script type="text/javascript">
+	$('form').submit(function(e){
+		e.preventDefault();
+		var ext = $('#newfile').val().split('.').pop().toLowerCase();
+		if(ext !== 'txt') {
+			alert('Please upload file with .txt extension!');
+		} else {
+			$('#uploadForm').unbind().submit();
+		}
+	});
+	$("#newfile").fileinput();
+</script>	
+</body>
+</html>
